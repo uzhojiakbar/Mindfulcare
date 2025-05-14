@@ -26,7 +26,8 @@ body {
 }
 
 .page-container {
-  min-height: 100vh;
+  min-height: 90vh;
   padding: 20px;
+  padding-bottom: 0;
   box-sizing: border-box;
 }

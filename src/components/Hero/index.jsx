@@ -6,7 +6,8 @@ import { Wrapper } from "./style"
 
 const Hero = () => {
     return (
-        <Wrapper >
+        <Wrapper className="page-container" id="home" >
+            <h1>Home Page</h1>
         </Wrapper>
     )
 }
