@@ -6,8 +6,7 @@ import { Wrapper } from "./style"
 
 const Hero = () => {
     return (
-        <Wrapper data-aos="fade-up">
-            <Navbar />
+        <Wrapper >
         </Wrapper>
     )
 }

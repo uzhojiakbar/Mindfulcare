@@ -11,10 +11,22 @@
 
 :root {
   --background: #fcf8f4;
+  --logo-text-color: #539cd0;
+  --button-background: linear-gradient(180deg, #539cd0 0%, #75c1e5 100%);
+  --button-background-hover: linear-gradient(270deg, #75c1e5 0%, #539cd0 100%);
 }
 
 html,
 body {
   max-width: 100vw;
   background-color: var(--background);
+
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px; /* sticky navbar balandligi uchun */
+}
+
+.page-container {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
