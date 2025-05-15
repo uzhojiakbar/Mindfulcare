@@ -139,7 +139,7 @@ const Navbar = () => {
   }
 
   return (
-    <NavbarWrapper data-aos="zoom-in" data-aos-duration="1000">
+    <NavbarWrapper data-aos="fade-up" data-aos-duration="500">
       <Logo>
         <img src="/logo.svg" alt="logo" />
         <span>
