@@ -7,12 +7,12 @@ const sections = ['home', 'about', 'services', 'page']
 
 const NavbarWrapper = styled.header`
   width: 100%;
-  height: 92px;
+  height: 122px;
   background-color: #fdf9f6;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding: 0 40px;
 
   position: sticky;
   z-index: 1000;

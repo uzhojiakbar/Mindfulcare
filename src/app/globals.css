@@ -22,12 +22,12 @@ body {
   background-color: var(--background);
 
   scroll-behavior: smooth;
-  scroll-padding-top: 95px; /* sticky navbar balandligi uchun */
+  scroll-padding-top: 122px; /* sticky navbar balandligi uchun */
 }
 
 .page-container {
-  min-height: 90vh;
-  padding: 20px;
+  min-height: 100vh;
+  /* padding: 20px 0; */
   padding-bottom: 0;
-  box-sizing: border-box;
+  /* border: 1px solid red; */
 }
