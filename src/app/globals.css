@@ -25,9 +25,20 @@ body {
   scroll-padding-top: 122px; /* sticky navbar balandligi uchun */
 }
 
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 .page-container {
   min-height: 100vh;
   /* padding: 20px 0; */
   padding-bottom: 0;
   /* border: 1px solid red; */
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

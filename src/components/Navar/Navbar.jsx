@@ -1,13 +1,13 @@
-'use client'
-import { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
+"use client";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const sections = ['home', 'about', 'services', 'page']
+const sections = ["home", "about", "services", "page"];
 
 const NavbarWrapper = styled.header`
   width: 100%;
-  height: 122px;
+  height: 10vh;
   background-color: #fdf9f6;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@ const NavbarWrapper = styled.header`
   z-index: 1000;
   top: 0;
   left: 0;
-`
+`;
 const Logo = styled.div`
   display: flex;
   align-items: center;
@@ -28,22 +28,22 @@ const Logo = styled.div`
   user-select: none;
   cursor: pointer;
 
-  span{
+  span {
     color: var(--logo-text-color);
     font-weight: 700;
-    font-family: 'Manrope';
+    font-family: "Manrope";
     font-size: 16px;
   }
   img {
     width: 29px;
     height: 100%;
   }
-`
+`;
 const NavWrapper = styled.nav`
   position: relative;
   display: flex;
   gap: 2rem;
-`
+`;
 
 const NavItem = styled.a`
   position: relative;
@@ -59,7 +59,7 @@ const NavItem = styled.a`
   &:hover {
     opacity: 0.7;
   }
-`
+`;
 
 const Underline = styled(motion.div)`
   position: absolute;
@@ -67,7 +67,7 @@ const Underline = styled(motion.div)`
   height: 2px;
   background: #111;
   border-radius: 999px;
-`
+`;
 
 const Button = styled.button`
   position: relative;
@@ -81,12 +81,11 @@ const Button = styled.button`
   z-index: 0;
 
   font-weight: 700;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-size: 18px;
   color: white;
 
-
- &::before {
+  &::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -98,45 +97,46 @@ const Button = styled.button`
 
   &:hover::before {
     opacity: 1;
-  }`
+  }
+`;
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState('home')
-  const [indicatorProps, setIndicatorProps] = useState({ left: 0, width: 0 })
+  const [activeLink, setActiveLink] = useState("home");
+  const [indicatorProps, setIndicatorProps] = useState({ left: 0, width: 0 });
 
   const handleScroll = () => {
-    let currentSection = 'home'
+    let currentSection = "home";
     for (let id of sections) {
-      const el = document.getElementById(id)
+      const el = document.getElementById(id);
       if (el) {
-        const rect = el.getBoundingClientRect()
+        const rect = el.getBoundingClientRect();
         if (rect.top <= 100 && rect.bottom >= 100) {
-          currentSection = id
-          break
+          currentSection = id;
+          break;
         }
       }
     }
-    setActiveLink(currentSection)
-  }
+    setActiveLink(currentSection);
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
-    const el = document.querySelector(`[data-nav="${activeLink}"]`)
+    const el = document.querySelector(`[data-nav="${activeLink}"]`);
     if (el) {
-      const { offsetLeft, offsetWidth } = el
-      setIndicatorProps({ left: offsetLeft, width: offsetWidth })
+      const { offsetLeft, offsetWidth } = el;
+      setIndicatorProps({ left: offsetLeft, width: offsetWidth });
     }
-  }, [activeLink])
+  }, [activeLink]);
 
   const scrollToSection = (id) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  }
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <NavbarWrapper data-aos="fade-up" data-aos-duration="500">
@@ -149,8 +149,7 @@ const Navbar = () => {
       </Logo>
 
       <NavWrapper>
-
-        {sections.map(id => (
+        {sections.map((id) => (
           <NavItem
             key={id}
             data-nav={id}
@@ -163,7 +162,7 @@ const Navbar = () => {
 
         <Underline
           layout
-          transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
           style={{
             left: indicatorProps.left,
             width: indicatorProps.width,
@@ -171,9 +170,8 @@ const Navbar = () => {
         />
       </NavWrapper>
       <Button>Contact Us</Button>
-
     </NavbarWrapper>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

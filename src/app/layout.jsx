@@ -1,12 +1,12 @@
 // app/layout.jsx
-import AosClient from './AosClient'
-import StyledComponentsRegistry from './StyledComponentsRegistry'
-import './globals.css' // shu joyda ulanadi
+import AosClient from "./AosClient";
+import StyledComponentsRegistry from "./StyledComponentsRegistry";
+import "./globals.css"; // shu joyda ulanadi
 
 export const metadata = {
-  title: 'My App',
-  description: 'Test',
-}
+  title: "My App",
+  description: "Test",
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -14,10 +14,9 @@ export default function RootLayout({ children }) {
       <body>
         <StyledComponentsRegistry>
           <AosClient />
-
           {children}
         </StyledComponentsRegistry>
       </body>
     </html>
-  )
+  );
 }
