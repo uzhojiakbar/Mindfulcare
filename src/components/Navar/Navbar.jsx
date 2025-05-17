@@ -110,7 +110,7 @@ const Navbar = () => {
       const el = document.getElementById(id);
       if (el) {
         const rect = el.getBoundingClientRect();
-        if (rect.top <= 100 && rect.bottom >= 100) {
+        if (rect.top <= 0 && rect.bottom >= 0) {
           currentSection = id;
           break;
         }

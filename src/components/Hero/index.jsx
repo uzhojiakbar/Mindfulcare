@@ -27,10 +27,11 @@ const HeroSection = styled.section`
 
 const Left = styled.div`
   padding: 80px 40px;
-  max-width: 650px;
+  max-width: 950px;
   display: flex;
   flex-direction: column;
   gap: 50px;
+  width: 100%;
 `;
 
 const Right = styled.div`
@@ -43,11 +44,11 @@ const Right = styled.div`
 
 const Title = styled.h1`
   font-size: 48px;
-  width: 100%;
   line-height: 1.2;
   font-weight: 700;
   color: #111;
   font-family: "Manrope";
+  width: 100%;
 
   @media (max-width: 768px) {
     font-size: 36px;
@@ -227,10 +228,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            style={{ width: "100%" }}
           >
             <Title>
-              Healthy Minds, Happy Lives <Highlight>Mental Health </Highlight>{" "}
-              Consultancy
+              Учебно-научный центр <br />
+              остеопатии <Highlight>им. С.В. Новосельцева</Highlight>
+              <br /> Официальный набор на обучение{" "}
             </Title>
           </motion.div>
 
@@ -240,9 +243,11 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <Description>
-              Lorem ipsum dolor sit amet consectetur. Convallis est urna
-              adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet
-              at quam.
+              Пройдите обучение остеопатии с практикой на базе клиники Biolife и{" "}
+              <br />
+              семинарами от СЗ Академии. Получите диплом государственного
+              образца <br />
+              всего за 6 месяцев.
             </Description>
           </motion.div>
 
@@ -251,7 +256,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button>Get started</Button>
+            <Button>Оставить заявку</Button>
           </motion.div>
 
           <Logos>

@@ -22,7 +22,7 @@ body {
   background-color: var(--background);
 
   scroll-behavior: smooth;
-  scroll-padding-top: 122px; /* sticky navbar balandligi uchun */
+  scroll-padding-top: 11vh; /* sticky navbar balandligi uchun */
 }
 
 body {
@@ -33,12 +33,10 @@ body {
 .page-container {
   min-height: 100vh;
   /* padding: 20px 0; */
-  padding-bottom: 0;
   /* border: 1px solid red; */
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
