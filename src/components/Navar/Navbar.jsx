@@ -103,14 +103,17 @@ const Button = styled.button`
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [indicatorProps, setIndicatorProps] = useState({ left: 0, width: 0 });
+  const [scrollLock, setScrollLock] = useState(false);
 
   const handleScroll = () => {
+    if (scrollLock) return; // scroll davomida o‘zgarish bo‘lmasin
+
     let currentSection = "home";
     for (let id of sections) {
       const el = document.getElementById(id);
       if (el) {
         const rect = el.getBoundingClientRect();
-        if (rect.top <= 0 && rect.bottom >= 0) {
+        if (rect.top <= 110 && rect.bottom > 110) {
           currentSection = id;
           break;
         }
@@ -135,7 +138,19 @@ const Navbar = () => {
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setActiveLink(id);
+
+      // scroll tugagach indikatorni to‘g‘ri hisoblash uchun delay beramiz
+      setTimeout(() => {
+        const el = document.querySelector(`[data-nav="${id}"]`);
+        if (el) {
+          const { offsetLeft, offsetWidth } = el;
+          setIndicatorProps({ left: offsetLeft, width: offsetWidth });
+        }
+      }, 300); // scroll animatsiya davomiga qarab sozlashingiz mumkin
+    }
   };
 
   return (
