@@ -1,13 +1,22 @@
-// app/StyledComponentsRegistry.jsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheetManager } from "styled-components";
-import isPropValid from "@emotion/is-prop-valid";
+import { useServerInsertedHTML } from "next/navigation";
 
 export default function StyledComponentsRegistry({ children }) {
+  const [styledComponentsStyleSheet] = useState(
+    () => new (require("styled-components").ServerStyleSheet)()
+  );
+
+  useServerInsertedHTML(() => {
+    const styles = styledComponentsStyleSheet.getStyleElement();
+    styledComponentsStyleSheet.instance.clearTag();
+    return <>{styles}</>;
+  });
+
   return (
-    <StyleSheetManager shouldForwardProp={(prop) => isPropValid(prop)}>
+    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
       {children}
     </StyleSheetManager>
   );
