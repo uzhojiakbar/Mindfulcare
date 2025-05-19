@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const Nav = styled.nav`
   padding: 20px 40px;
   display: flex;
+  height: 10vh;
   justify-content: space-between;
   align-items: center;
   position: sticky;
@@ -37,6 +38,16 @@ const Logo = styled.div`
   img {
     width: 29px;
     height: 100%;
+  }
+
+  @media (max-width: 1440px) {
+    span {
+      font-size: 14px;
+    }
+    img {
+      width: 25px;
+      height: 100%;
+    }
   }
 
   @media (max-width: 768px) {
@@ -76,6 +87,11 @@ const MenuLinks = styled.ul`
     border-bottom: 2px solid #539cd0;
     font-weight: 600;
     color: #539cd0;
+  }
+  @media (max-width: 1440px) {
+    a {
+      font-size: 16px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -175,12 +191,12 @@ const MobileMenuWrapper = styled(motion.div)`
   top: 10vh;
   left: 0;
   width: 100%;
-  height: 90%;
+  height: 90vh;
   background-color: var(--background);
   z-index: 9999;
-  padding: 20px;
+  padding: 20px 10px;
 
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
@@ -193,7 +209,7 @@ const MobileMenuWrapper = styled(motion.div)`
     font-family: "Manrope";
     font-size: 18px;
     overflow: auto;
-    margin-top: 40px;
+    height: 80%;
 
     li {
       width: 100%;
@@ -212,6 +228,9 @@ const MobileMenuWrapper = styled(motion.div)`
         color: #75c1e5;
       }
     }
+  }
+  @media (max-width: 768px) {
+    display: flex;
   }
 `;
 
