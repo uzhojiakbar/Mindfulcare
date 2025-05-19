@@ -212,6 +212,7 @@ const MobileMenuWrapper = styled(motion.div)`
     height: 80%;
 
     li {
+      border-radius: 10px !important;
       width: 100%;
       padding: 20px 14px;
       text-align: center;
