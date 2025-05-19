@@ -352,7 +352,7 @@ export default function Hero() {
               >
                 <Image
                   className="img"
-                  src={`/investor${i}.svg`}
+                  src={`/Investor${i}.svg`}
                   alt={`logo${i}`}
                   width={60}
                   height={30}
