@@ -21,17 +21,37 @@ const HeroSection = styled.section`
   gap: 40px;
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 60px 20px;
+  }
+
+  @media (max-width: 500px) {
+    justify-content: flex-start;
+    height: fit-content;
   }
 `;
 
 const Left = styled.div`
   padding: 80px 40px;
   max-width: 950px;
+  height: 100%;
+
   display: flex;
   flex-direction: column;
   gap: 50px;
   width: 100%;
+
+  @media (max-width: 1100px) {
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+    justify-content: space-evenly;
+  }
+
+  @media (max-width: 500px) {
+    justify-content: flex-start;
+    height: fit-content;
+  }
 `;
 
 const Right = styled.div`
@@ -50,8 +70,16 @@ const Title = styled.h1`
   font-family: "Manrope";
   width: 100%;
 
+  @media (max-width: 1100px) {
+    font-size: 42px;
+  }
+
   @media (max-width: 768px) {
     font-size: 36px;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 20px;
   }
 `;
 
@@ -66,6 +94,10 @@ const Description = styled.p`
 
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 const Button = styled.button`
@@ -97,6 +129,10 @@ const Button = styled.button`
   &:hover::before {
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
 `;
 
 const Logos = styled.div`
@@ -112,35 +148,84 @@ const Logos = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media (max-width: 500px) {
+    .img {
+      width: 90%;
+      height: 90%;
+    }
+  }
 `;
 
 const Stats = styled.div`
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #75c1e5, #539cd0);
+  align-content: center;
+  background: var(--button-background);
   color: white;
   padding: 40px 0;
   font-family: "Poppins", sans-serif;
   flex-wrap: wrap;
   gap: 20px;
   height: 15%;
-  max-height: 170px;
+
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+  }
 `;
 
 const StatItem = styled.div`
-  text-align: center;
-  h2 {
-    font-size: 36px;
-    font-weight: 700;
-    min-height: 45px;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 30px;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-family: "Manrope", sans-serif;
+    text-align: left;
+    .info-text-1 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .info-text-2 {
+      font-size: 40px;
+      font-weight: 800;
+    }
   }
-  p {
-    font-size: 16px;
-    margin-top: 5px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    .info {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 500px) {
+    gap: 10px;
+    .info {
+      .info-text-1 {
+        font-size: 14px;
+      }
+      .info-text-2 {
+        font-size: 28px;
+      }
+    }
   }
 `;
 
@@ -258,7 +343,7 @@ export default function Hero() {
           </motion.div>
 
           <Logos>
-            {[1, 2, 3, 4].map((i) => (
+            {[1, 2].map((i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -267,7 +352,7 @@ export default function Hero() {
               >
                 <Image
                   className="img"
-                  src={`/investor1.svg`}
+                  src={`/investor${i}.svg`}
                   alt={`logo${i}`}
                   width={60}
                   height={30}
@@ -297,28 +382,32 @@ export default function Hero() {
       </HeroSection>
       <Stats>
         <StatItem>
-          <h2>
-            <AnimatedNumber value={counters.exp} />
-          </h2>
-          <p>Experienced</p>
+          <img src="/Clock.svg" alt="Clock" />
+          <div className="info">
+            <p className="info-text-1">Часов обучения</p>
+            <p className="info-text-2">720</p>
+          </div>
         </StatItem>
         <StatItem>
-          <h2>
-            <AnimatedNumber value={counters.team} />
-          </h2>
-          <p>Teams</p>
+          <img src="/UserHandUp.svg" alt="Clock" />
+          <div className="info">
+            <p className="info-text-1">Преподаватели</p>
+            <p className="info-text-2">России</p>
+          </div>
         </StatItem>
         <StatItem>
-          <h2>
-            <AnimatedNumber value={counters.clients} />
-          </h2>
-          <p>Clients</p>
+          <img src="/Star.svg" alt="Clock" />
+          <div className="info">
+            <p className="info-text-1">Практика</p>
+            <p className="info-text-2">в Biolife</p>
+          </div>
         </StatItem>
         <StatItem>
-          <h2>
-            <AnimatedNumber value={counters.done} />
-          </h2>
-          <p>Project Done</p>
+          <img src="/RibbonsStar.svg" alt="Clock" />
+          <div className="info">
+            <p className="info-text-1">Официальные</p>
+            <p className="info-text-2">Сертификаты</p>
+          </div>
         </StatItem>
       </Stats>
     </HeroContainer>
