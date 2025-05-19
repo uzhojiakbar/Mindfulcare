@@ -1,24 +1,24 @@
 "use client";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 
-const sections = ["home", "about", "services", "page"];
-
-const NavbarWrapper = styled.header`
-  width: 100%;
-  height: 10vh;
-  background-color: #fdf9f6;
+const Nav = styled.nav`
+  padding: 20px 40px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-
+  align-items: center;
   position: sticky;
-  z-index: 1000;
   top: 0;
-  left: 0;
+  z-index: 1000;
+  background-color: var(--background);
+
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+  }
 `;
+
 const Logo = styled.div`
   display: flex;
   align-items: center;
@@ -38,38 +38,87 @@ const Logo = styled.div`
     width: 29px;
     height: 100%;
   }
-`;
-const NavWrapper = styled.nav`
-  position: relative;
-  display: flex;
-  gap: 2rem;
-`;
 
-const NavItem = styled.a`
-  position: relative;
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  font-weight: ${({ isActive }) => (isActive ? 600 : 400)};
-  color: #111;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 4px 0;
-  transition: color 0.3s ease;
-
-  &:hover {
-    opacity: 0.7;
+  @media (max-width: 768px) {
+    gap: 10px;
+    img {
+      width: 20px;
+      height: 100%;
+    }
+    span {
+      font-size: 11px;
+    }
   }
 `;
 
-const Underline = styled(motion.div)`
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  background: #111;
-  border-radius: 999px;
+const MenuLinks = styled.ul`
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  align-items: center;
+
+  a {
+    position: relative;
+    font-family: "Manrope", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #111;
+    cursor: pointer;
+    text-decoration: none !important;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  .active {
+    border-bottom: 2px solid #539cd0;
+    font-weight: 600;
+    color: #539cd0;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
-const Button = styled.button`
+const MenuButton = styled.button`
+  position: relative;
+  overflow: hidden;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--button-background);
+  z-index: 0;
+
+  font-weight: 700;
+  font-family: "Manrope";
+  font-size: 18px;
+  color: white;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--button-background-hover);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MenuButtonMobile = styled.button`
   position: relative;
   overflow: hidden;
   border: none;
@@ -100,61 +149,124 @@ const Button = styled.button`
   }
 `;
 
-const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("home");
-  const [indicatorProps, setIndicatorProps] = useState({ left: 0, width: 0 });
-  const [scrollLock, setScrollLock] = useState(false);
+const Burger = styled.div`
+  display: none;
+  border: 1px solid #75c1e5;
+  border-radius: 10px;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
 
-  const handleScroll = () => {
-    if (scrollLock) return; // scroll davomida o‘zgarish bo‘lmasin
+  img {
+    width: 24px;
+    height: 24px;
+  }
 
-    let currentSection = "home";
-    for (let id of sections) {
-      const el = document.getElementById(id);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 110 && rect.bottom > 110) {
-          currentSection = id;
-          break;
-        }
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const MobileMenuWrapper = styled(motion.div)`
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-color: var(--background);
+  z-index: 9999;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: "Manrope";
+    font-size: 18px;
+    overflow: auto;
+    margin-top: 40px;
+
+    li {
+      width: 100%;
+      padding: 20px 14px;
+      text-align: center;
+      a {
+        text-decoration: none;
+        text-align: center;
+        color: #1a1a1a;
       }
     }
-    setActiveLink(currentSection);
+
+    .active {
+      background-color: #dff5ff;
+      a {
+        color: #75c1e5;
+      }
+    }
+  }
+`;
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const sections = [
+    "home",
+    "about",
+    "why",
+    "program",
+    "teachers",
+    "reviews",
+    "faq",
+  ];
+  const sectionNames = {
+    home: "О нас",
+    about: "Почему мы?",
+    why: "Программа",
+    program: "Учителя",
+    teachers: "Отзывы",
+    reviews: "FAQ",
+    faq: "Контакты",
   };
 
+  const [activeSection, setActiveSection] = useState("home");
+
   useEffect(() => {
+    const handleScroll = () => {
+      let current = "home";
+      for (const id of sections) {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (
+            rect.top <= window.innerHeight * 0.3 &&
+            rect.bottom >= window.innerHeight * 0.3
+          ) {
+            current = id;
+            break;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  useEffect(() => {
-    const el = document.querySelector(`[data-nav="${activeLink}"]`);
-    if (el) {
-      const { offsetLeft, offsetWidth } = el;
-      setIndicatorProps({ left: offsetLeft, width: offsetWidth });
-    }
-  }, [activeLink]);
-
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setActiveLink(id);
-
-      // scroll tugagach indikatorni to‘g‘ri hisoblash uchun delay beramiz
-      setTimeout(() => {
-        const el = document.querySelector(`[data-nav="${id}"]`);
-        if (el) {
-          const { offsetLeft, offsetWidth } = el;
-          setIndicatorProps({ left: offsetLeft, width: offsetWidth });
-        }
-      }, 300); // scroll animatsiya davomiga qarab sozlashingiz mumkin
-    }
-  };
-
   return (
-    <NavbarWrapper data-aos="fade-up" data-aos-duration="500">
+    <Nav>
       <Logo>
         <img src="/logo.svg" alt="logo" />
         <span>
@@ -162,31 +274,51 @@ const Navbar = () => {
           учебно-научный центр остеопатии <br /> имени С.В.Новосельцева
         </span>
       </Logo>
-
-      <NavWrapper>
-        {sections.map((id) => (
-          <NavItem
-            key={id}
-            data-nav={id}
-            onClick={() => scrollToSection(id)}
-            isActive={activeLink === id}
-          >
-            {id.charAt(0).toUpperCase() + id.slice(1)}
-          </NavItem>
+      <MenuLinks>
+        {sections.map((id, index) => (
+          <li key={index}>
+            <a href={`#${id}`} className={activeSection === id ? "active" : ""}>
+              {sectionNames[id]}
+            </a>
+          </li>
         ))}
+      </MenuLinks>
 
-        <Underline
-          layout
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          style={{
-            left: indicatorProps.left,
-            width: indicatorProps.width,
-          }}
-        />
-      </NavWrapper>
-      <Button>Contact Us</Button>
-    </NavbarWrapper>
+      <MenuButton>Оставить заявку</MenuButton>
+
+      {isOpen ? (
+        <Burger className="close" onClick={() => setIsOpen(false)}>
+          <img src="/Close.svg" alt="menu" />
+        </Burger>
+      ) : (
+        <Burger onClick={() => setIsOpen(true)}>
+          <img src="/HamburgerMenu.svg" alt="menu" />
+        </Burger>
+      )}
+
+      <AnimatePresence>
+        {isOpen && (
+          <MobileMenuWrapper
+            initial={{ x: "40%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "40%" }}
+            transition={{ duration: 0.1 }}
+          >
+            <ul>
+              {sections.map((id, index) => (
+                <li
+                  className={activeSection === id ? "active" : ""}
+                  key={index}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <a href={`#${id}`}>{sectionNames[id]}</a>
+                </li>
+              ))}
+            </ul>
+            <MenuButtonMobile>Оставить заявку</MenuButtonMobile>
+          </MobileMenuWrapper>
+        )}
+      </AnimatePresence>
+    </Nav>
   );
-};
-
-export default Navbar;
+}

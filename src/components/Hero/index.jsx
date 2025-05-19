@@ -4,7 +4,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 const HeroContainer = styled.section`
-  min-height: 90vh;
+  min-height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -104,7 +104,7 @@ const Logos = styled.div`
   width: 100%;
   gap: 30px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 30px;
   flex-wrap: wrap;
 
@@ -124,7 +124,8 @@ const Stats = styled.div`
   font-family: "Poppins", sans-serif;
   flex-wrap: wrap;
   gap: 20px;
-  height: 15vh;
+  height: 15%;
+  max-height: 170px;
 `;
 
 const StatItem = styled.div`
@@ -144,14 +145,11 @@ const StatItem = styled.div`
 `;
 
 export const MainImage = styled(Image)`
-  /* width: 800px !important; 
-    height: 650px !important;  */
   width: 50% !important;
   height: 83% !important;
   position: absolute;
   bottom: 0;
   right: 0;
-  /* border: 1px solid red; */
   @media (max-height: 768px) {
     display: none;
   }
@@ -165,8 +163,8 @@ const ImageWrapper = styled.div`
   right: 0;
 
   @media (max-width: 1440px) {
-    width: 40% !important;
-    height: 80% !important;
+    width: 30% !important;
+    height: 70% !important;
   }
 
   @media (max-width: 1100px) {
