@@ -1,4 +1,5 @@
 // app/layout.jsx
+import GlobalLoading from "@/components/Loading/loading";
 import AosClient from "./AosClient";
 import StyledComponentsRegistry from "./StyledComponentsRegistry";
 import "./globals.css"; // shu joyda ulanadi
@@ -13,7 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AosClient />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <GlobalLoading>{children}</GlobalLoading>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
