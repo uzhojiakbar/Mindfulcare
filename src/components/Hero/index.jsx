@@ -10,7 +10,7 @@ const HeroContainer = styled.section`
   justify-content: flex-start;
 `;
 const HeroSection = styled.section`
-  background: #fdf9f6;
+  background: var(--background);
   height: 75vh;
   max-height: 900px;
   display: flex;

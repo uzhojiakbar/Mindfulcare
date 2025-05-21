@@ -1,4 +1,5 @@
 "use client";
+import AboutSection from "@/components/About";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navar/Navbar";
 
@@ -16,9 +17,7 @@ export default function Home() {
     <section className="main-container">
       <Navbar />
       <Hero />
-      <section id="about" className="page-container">
-        <h1>About Page</h1>
-      </section>
+      <AboutSection />
       <section className="page-container" id="why">
         <h1>Services Page</h1>
       </section>

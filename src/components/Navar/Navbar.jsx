@@ -212,23 +212,20 @@ const MobileMenuWrapper = styled(motion.div)`
     overflow: auto;
     height: 80%;
 
-    li {
-      border-radius: 10px !important;
-      width: 100%;
-      padding: 20px 14px;
+    a {
+      text-decoration: none;
       text-align: center;
-      a {
-        text-decoration: none;
-        text-align: center;
-        color: #1a1a1a;
+      color: #1a1a1a;
+      background-color: var(--background);
+      border-radius: 10px !important;
+      li {
+        padding: 20px 14px;
       }
     }
 
     .active {
       background-color: #dff5ff;
-      a {
-        color: #75c1e5;
-      }
+      color: #75c1e5;
     }
   }
   @media (max-width: 768px) {
@@ -318,13 +315,14 @@ export default function Navbar() {
           >
             <ul>
               {sections.map((id, index) => (
-                <li
+                <a
                   className={activeSection === id ? "active" : ""}
-                  key={index}
                   onClick={() => setIsOpen(false)}
+                  href={`#${id}`}
+                  key={index}
                 >
-                  <a href={`#${id}`}>{sectionNames[id]}</a>
-                </li>
+                  <li>{sectionNames[id]}</li>
+                </a>
               ))}
             </ul>
             <MenuButtonMobile>Оставить заявку</MenuButtonMobile>
