@@ -304,7 +304,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <HeroContainer id="home" className="page-container">
+    <HeroContainer data-aos="fade-down" id="home" className="page-container">
       <HeroSection>
         <Left>
           <motion.div

@@ -79,7 +79,7 @@ const ImageWrapper = styled.div`
 
 export default function AboutSection() {
   return (
-    <Section className="page1-container" id="about">
+    <Section data-aos="fade-down" className="page1-container" id="about">
       <ImageWrapper>
         <Image
           src="/about.svg"

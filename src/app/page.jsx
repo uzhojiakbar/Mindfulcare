@@ -2,6 +2,7 @@
 import AboutSection from "@/components/About";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navar/Navbar";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection/WhyChooseUsSection";
 
 // const sections = ["about", "why", "program", "teachers", "reviews", "faq"];
 // const sectionNames = {
@@ -18,9 +19,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <AboutSection />
-      <section className="page-container" id="why">
-        <h1>Services Page</h1>
-      </section>
+      <WhyChooseUsSection />
       <section className="page-container" id="program">
         <h1>[Page] Page</h1>
       </section>
