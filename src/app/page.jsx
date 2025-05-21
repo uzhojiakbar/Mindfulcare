@@ -2,18 +2,27 @@
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navar/Navbar";
 
+// const sections = ["about", "why", "program", "teachers", "reviews", "faq"];
+// const sectionNames = {
+//   about: "О нас",
+//   why: "Почему мы?",
+//   program: "Программа",
+//   teachers: "Учителя",
+//   reviews: "Отзывы",
+//   faq: "FAQ",
+// };
 export default function Home() {
   return (
     <section className="main-container">
       <Navbar />
       <Hero />
-      <section className="page-container" id="about">
+      <section id="about" className="page-container">
         <h1>About Page</h1>
       </section>
-      <section className="page-container" id="services">
+      <section className="page-container" id="why">
         <h1>Services Page</h1>
       </section>
-      <section className="page-container" id="page">
+      <section className="page-container" id="program">
         <h1>[Page] Page</h1>
       </section>
     </section>

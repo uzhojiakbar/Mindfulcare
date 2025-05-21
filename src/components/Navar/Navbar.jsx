@@ -20,9 +20,10 @@ const Nav = styled.nav`
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
   display: flex;
   align-items: center;
+  text-decoration: none;
 
   gap: 15px;
 
@@ -237,23 +238,14 @@ const MobileMenuWrapper = styled(motion.div)`
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const sections = [
-    "home",
-    "about",
-    "why",
-    "program",
-    "teachers",
-    "reviews",
-    "faq",
-  ];
+  const sections = ["about", "why", "program", "teachers", "reviews", "faq"];
   const sectionNames = {
-    home: "О нас",
-    about: "Почему мы?",
-    why: "Программа",
-    program: "Учителя",
-    teachers: "Отзывы",
-    reviews: "FAQ",
-    faq: "Контакты",
+    about: "О нас",
+    why: "Почему мы?",
+    program: "Программа",
+    teachers: "Учителя",
+    reviews: "Отзывы",
+    faq: "FAQ",
   };
 
   const [activeSection, setActiveSection] = useState("home");
@@ -287,7 +279,7 @@ export default function Navbar() {
 
   return (
     <Nav>
-      <Logo>
+      <Logo href="/#home">
         <img src="/logo.svg" alt="logo" />
         <span>
           Национальный <br />
