@@ -4,7 +4,7 @@ import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 const Section = styled.section`
   width: 100%;
   padding: 48px 0 48px 0;
-  background: #fff;
+  background: var(--background);
   display: flex;
   justify-content: center;
   @media (max-width: 900px) {

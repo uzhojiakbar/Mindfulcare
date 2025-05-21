@@ -141,7 +141,7 @@ const slides = [
 
 const Section = styled.section`
   padding: 80px 0 100px 0;
-  background: #f9fbfc;
+  background: var(--background);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -164,7 +164,7 @@ const SlidesWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background: #f9fbfc;
+  background: transparent;
   @media (max-width: 1023px) {
     min-height: 380px;
     height: 380px;
