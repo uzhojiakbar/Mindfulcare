@@ -132,10 +132,6 @@ const Input = styled.input`
   &:focus {
     border: 1.5px solid #539cd0;
   }
-
-  &::placeholder {
-    color: #344054;
-  }
 `;
 
 const Button = styled.button`

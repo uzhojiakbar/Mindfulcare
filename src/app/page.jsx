@@ -2,6 +2,7 @@
 import AboutSection from "@/components/About";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import FaqSection from "@/components/FaqSection/FaqSection";
+import Footer from "@/components/Footer/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navar/Navbar";
 import ProgramSection from "@/components/ProgramSection/ProgramSection";
@@ -28,6 +29,7 @@ export default function Home() {
       <TeacherCardList />
       <FaqSection />
       <ContactForm />
+      <Footer />
       {/* <section className="page-container" id="program">
         <h1>[Page] Page</h1>
       </section> */}
