@@ -89,7 +89,7 @@ const Highlight = styled.span`
 
 const Description = styled.p`
   font-size: 18px;
-  width: 100%;
+  width: 70%;
   color: rgba(26, 26, 26, 1);
 
   font-family: "Poppins", sans-serif;
@@ -97,6 +97,7 @@ const Description = styled.p`
 
   @media (max-width: 500px) {
     font-size: 14px;
+    width: 100%;
   }
 `;
 
@@ -314,7 +315,7 @@ export default function Hero() {
             style={{ width: "100%" }}
           >
             <Title>
-              Учебно-научный центр <br /> остеопатии asd
+              Учебно-научный центр <br /> остеопатии
               <Highlight> им. С.В. Новосельцева</Highlight> Официальный набор на
               обучение
             </Title>

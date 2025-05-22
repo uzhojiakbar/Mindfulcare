@@ -132,14 +132,43 @@ const NavTitle = styled.div`
 const NavLinks = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 32px;
-  font-size: 15px;
+  gap: 0 32px;
+  font-size: 16px;
   font-family: "Manrope", sans-serif;
   font-weight: 500;
   color: #222;
+  margin-top: 2px;
+
+  a {
+    color: #222;
+    text-decoration: none;
+    padding: 0 0 2px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.18s, border-color 0.18s;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.7;
+    &:hover,
+    &:focus {
+      color: #61b6e6;
+      border-bottom: 2px solid #61b6e6;
+      background: none;
+    }
+    &:active {
+      color: #3a8bb7;
+      border-bottom: 2px solid #3a8bb7;
+    }
+  }
+
   @media (max-width: 900px) {
     flex-direction: column;
-    gap: 8px;
+    gap: 8px 0;
+    a {
+      padding: 0 0 2px 0;
+      font-size: 15px;
+    }
   }
 `;
 
@@ -234,10 +263,6 @@ export default function Footer() {
                 учебно-научный центр остеопатии <br /> имени С.В.Новосельцева
               </span>
             </FooterLogo>
-            {/* <FooterTitle>
-              Национальный учебно-научный центр остеопатии имени
-              С.В.Новосельцева
-            </FooterTitle> */}
             <FooterDesc>
               © Национальный учебно-научный центр остеопатии им.
               С.В.Новосельцева, 2025

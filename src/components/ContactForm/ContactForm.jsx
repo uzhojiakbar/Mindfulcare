@@ -334,13 +334,20 @@ export default function ContactForm() {
       return;
     }
 
-    const data = { fio, phone, telegram };
-
     showToast({ type: "loading", msg: "Отправка..." });
     setLoading(true);
 
     try {
-      await new Promise((res) => setTimeout(res, 1200));
+      const resp = await fetch("http://localhost:5556/api/message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fio,
+          phone,
+          username: telegram,
+        }),
+      });
+      if (!resp.ok) throw new Error();
       showToast({ type: "success", msg: "Успешно отправлено!" });
       setFio("");
       setPhone("");
@@ -348,7 +355,7 @@ export default function ContactForm() {
     } catch (e) {
       showToast({
         type: "error",
-        msg: "Произошла ошибка. Попробуйте еще раз.",
+        msg: "Сообщение не отправлено, попробуйте позже.",
       });
     } finally {
       setLoading(false);
