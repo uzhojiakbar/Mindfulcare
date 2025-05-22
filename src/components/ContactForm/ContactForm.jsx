@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled, { keyframes, css } from "styled-components";
+import axios from "axios";
 
 const FormSection = styled.section`
   width: 100%;
@@ -338,16 +339,12 @@ export default function ContactForm() {
     setLoading(true);
 
     try {
-      const resp = await fetch("http://65.108.155.163:5556/api/message", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: fio,
-          phone,
-          username: telegram,
-        }),
+      // Use axios for the request
+      await axios.post("http://65.108.155.163:5556/api/message", {
+        name: fio,
+        phone,
+        username: telegram,
       });
-      if (!resp.ok) throw new Error();
       showToast({ type: "success", msg: "Успешно отправлено!" });
       setFio("");
       setPhone("");
