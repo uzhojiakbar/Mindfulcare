@@ -100,7 +100,8 @@ const MenuLinks = styled.ul`
   }
 `;
 
-const MenuButton = styled.button`
+const MenuButton = styled.a`
+  text-decoration: none;
   position: relative;
   overflow: hidden;
   border: none;
@@ -135,7 +136,9 @@ const MenuButton = styled.button`
   }
 `;
 
-const MenuButtonMobile = styled.button`
+const MenuButtonMobile = styled.a`
+  text-decoration: none;
+  text-align: center;
   position: relative;
   overflow: hidden;
   border: none;
@@ -293,7 +296,7 @@ export default function Navbar() {
         ))}
       </MenuLinks>
 
-      <MenuButton>Оставить заявку</MenuButton>
+      <MenuButton href="#contact">Оставить заявку</MenuButton>
 
       {isOpen ? (
         <Burger className="close" onClick={() => setIsOpen(false)}>
@@ -325,7 +328,9 @@ export default function Navbar() {
                 </a>
               ))}
             </ul>
-            <MenuButtonMobile>Оставить заявку</MenuButtonMobile>
+            <MenuButtonMobile onClick={() => setIsOpen(false)} href="#contact">
+              Оставить заявку
+            </MenuButtonMobile>
           </MobileMenuWrapper>
         )}
       </AnimatePresence>

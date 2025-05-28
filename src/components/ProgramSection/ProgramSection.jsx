@@ -3,8 +3,10 @@ import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 
 const Section = styled.section`
   width: 100%;
+  position: relative;
+
   padding: 48px 0 48px 0;
-  background: var(--background);
+  background: #fff;
   display: flex;
   justify-content: center;
   @media (max-width: 900px) {
@@ -14,6 +16,7 @@ const Section = styled.section`
 
 const Container = styled.div`
   display: flex;
+
   gap: 40px;
   max-width: 1440px;
   margin: 0 auto;
@@ -25,12 +28,19 @@ const Container = styled.div`
     align-items: stretch;
     padding: 0 4px;
   }
+
+  .decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
 `;
 
 const Left = styled.div`
-  flex: 1.2;
+  flex: 2;
   min-width: 40%;
-  max-width: 40%;
+  max-width: 50%;
   @media (max-width: 900px) {
     max-width: 100%;
     min-width: 0;
@@ -44,18 +54,20 @@ const MiniTitle = styled.div`
   font-weight: 600;
   font-size: 14px;
   font-family: "Manrope", sans-serif;
-  line-height: 1.2;
+  line-height: 120%;
   @media (max-width: 900px) {
     font-size: 12px;
   }
 `;
 
 const Title = styled.h2`
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   font-family: "Manrope", sans-serif;
   color: rgba(16, 24, 40, 1);
+  line-height: 100%;
+
   @media (max-width: 900px) {
     font-size: 18px;
     margin-bottom: 12px;
@@ -65,7 +77,8 @@ const Title = styled.h2`
 const Desc = styled.div`
   font-size: 16px;
   margin-bottom: 18px;
-  line-height: 1.6;
+  font-weight: 600;
+  line-height: 140%;
   font-family: "Manrope", sans-serif;
   ul {
     padding-left: 20px;
@@ -120,8 +133,10 @@ const PDFButton = styled.a`
 `;
 
 const Right = styled.div`
-  flex: 2;
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   flex-direction: column;
   gap: 18px;
   @media (max-width: 900px) {
@@ -131,10 +146,14 @@ const Right = styled.div`
 
 const Card = styled.div`
   border: 1px solid rgba(207, 216, 225, 1);
+  background-color: #ffffff;
+
   border-radius: 18px;
   padding: 24px;
   flex: 1;
   min-width: 260px;
+  max-width: 850px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -156,13 +175,14 @@ const CardTitleContainer = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   .next {
-    width: 35%;
+    width: 50%;
     font-size: 16px;
     color: rgba(102, 112, 133, 1);
-    margin-bottom: 18px;
-    line-height: 1.6;
+    margin-bottom: 16px;
+    line-height: 24px;
     font-family: "Manrope", sans-serif;
-    text-align: justify;
+    text-align: left;
+    max-width: 350px;
   }
   @media (max-width: 900px) {
     flex-direction: column;
@@ -186,7 +206,6 @@ const CardTitle = styled.div`
   align-items: center;
   gap: 10px;
   font-weight: 700;
-  margin-bottom: 6px;
   background: ${({ color }) =>
     color || "linear-gradient(88.95deg, #539CD0 25.53%, #75C1E5 73.97%)"};
   width: fit-content;
@@ -206,8 +225,9 @@ const CardTitle = styled.div`
 
 const CardList = styled.div`
   display: flex;
-  gap: 40px;
   font-size: 15px;
+  gap: 20px;
+
   color: rgba(102, 112, 133, 1);
   ul {
     list-style: none;
@@ -219,6 +239,7 @@ const CardList = styled.div`
     line-height: 1.5;
     display: flex;
     align-items: center;
+    max-width: 340px;
   }
   .img {
     min-width: 40px;
@@ -257,7 +278,7 @@ const EmojicContainer = styled.span`
 
 export default function ProgramSection() {
   return (
-    <Section id="program" data-aos="fade-down" className="page-container">
+    <Section id="program" data-aos="fade-down">
       <Container>
         <Left>
           <MiniTitle>720 часов / 6 месяцев</MiniTitle>
@@ -274,12 +295,13 @@ export default function ProgramSection() {
             <br />
             Документы по окончанию:
             <br />
+            <br />
             <ul>
-              <li> Сертификат о дополнительной специализации (для врачей)</li>
+              <li> Сертификат о дополнительной специальности (для врачей)</li>
               <li>
                 {" "}
-                Удостоверение о получении навыков (для специалистов с СЗ
-                Академии остеопатии и медицинских психологов)
+                Удостоверение о получении навыков (для специалистов с
+                Северо-Западная Академия Остеопатии и медицинской психологии)
               </li>
             </ul>
           </Desc>
@@ -304,7 +326,7 @@ export default function ProgramSection() {
                   />
                 </EmojicContainer>
                 Занятия в аудитории и онлайн. Теория, анатомия, биомеханика,
-                философия остеопатии.
+                философия остеопатии
               </div>
             </CardTitleContainer>
 
@@ -333,7 +355,7 @@ export default function ProgramSection() {
                       style={{ verticalAlign: "middle" }}
                     />
                   </EmojicContainer>
-                  СЗ Академия остеопатии (Россия)
+                  Северо-Западная Академия остеопатии (Россия)
                 </li>
                 <li>
                   <EmojicContainer>
@@ -374,7 +396,7 @@ export default function ProgramSection() {
 
             <CardList>
               <div className="img">
-                <img src="/cards_icon2.svg" alt="cards_icon1.svg" />
+                <img src="/cards_icon2.png" alt="cards_icon1.svg" />
               </div>
               <ul>
                 <li>
@@ -411,7 +433,7 @@ export default function ProgramSection() {
                       style={{ verticalAlign: "middle" }}
                     />
                   </EmojicContainer>
-                  Преподаватели из СЗ Академии + кураторы{" "}
+                  Преподаватели из Северо-Западная Академии + кураторы
                 </li>
               </ul>
             </CardList>
@@ -432,7 +454,7 @@ export default function ProgramSection() {
                     style={{ verticalAlign: "middle" }}
                   />
                 </EmojicContainer>
-                3-дневные семинары каждый месяц{" "}
+                3 раза в неделю
               </div>
             </CardTitleContainer>
 
@@ -451,7 +473,7 @@ export default function ProgramSection() {
                       style={{ verticalAlign: "middle" }}
                     />
                   </EmojicContainer>
-                  3 раза в неделю{" "}
+                  Под руководством опытных остеопатов
                 </li>
                 <li>
                   <EmojicContainer>
@@ -481,6 +503,7 @@ export default function ProgramSection() {
             </CardList>
           </Card>
         </Right>
+        <img className="decoration" src="/Decoration.svg" alt="" />
       </Container>
     </Section>
   );

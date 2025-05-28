@@ -36,7 +36,7 @@ const Left = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 32px;
   width: 100%;
 
   @media (max-width: 1100px) {
@@ -67,7 +67,8 @@ const Title = styled.h1`
   line-height: 1.2;
   font-weight: 700;
   color: #111;
-  font-family: "Manrope";
+  line-height: 110.00000000000001%;
+  font-family: "Manrope", sans-serif;
   width: 100%;
 
   @media (max-width: 1100px) {
@@ -84,6 +85,8 @@ const Title = styled.h1`
 `;
 
 const Highlight = styled.span`
+  font-family: "Manrope", sans-serif;
+
   color: #539cd0;
 `;
 
@@ -91,9 +94,11 @@ const Description = styled.p`
   font-size: 18px;
   width: 70%;
   color: rgba(26, 26, 26, 1);
+  line-height: 110%;
 
-  font-family: "Poppins", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 400;
+  margin-bottom: 50px;
 
   @media (max-width: 500px) {
     font-size: 14px;
@@ -101,15 +106,16 @@ const Description = styled.p`
   }
 `;
 
-const Button = styled.button`
+const Button = styled.a`
+  text-decoration: none;
   position: relative;
   overflow: hidden;
   border: none;
   padding: 15px 30px;
-  border-radius: 9999px;
+  border-radius: 30px !important;
   font-weight: 500;
   cursor: pointer;
-  background: var(--button-background);
+  background: var(--button-background, #007bff); // Fallback color
   z-index: 0;
 
   font-weight: 700;
@@ -121,13 +127,15 @@ const Button = styled.button`
     content: "";
     position: absolute;
     inset: 0;
-    background: var(--button-background-hover);
     z-index: -1;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
+    border-radius: 30px !important;
+    background: var(--button-background-hover, #0056b3); // Fallback hover color
   }
 
   &:hover::before {
+    border-radius: 30px !important;
     opacity: 1;
   }
 
@@ -157,20 +165,21 @@ const Logos = styled.div`
     }
   }
 `;
-
 const Stats = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, auto)
+  ); // Dynamically adjusts to fit content
+  justify-content: space-around;
   align-items: center;
   align-content: center;
   background: var(--button-background);
   color: white;
-  padding: 40px 0;
-  font-family: "Poppins", sans-serif;
-  flex-wrap: wrap;
-  gap: 20px;
-  height: 15%;
+  padding: 45px 0;
+  font-family: "Manrope", sans-serif;
+  gap: 50px 10px;
+  height: fit-content;
 
   @media (max-width: 1440px) {
     grid-template-columns: repeat(2, 1fr);
@@ -184,26 +193,37 @@ const Stats = styled.div`
 
 const StatItem = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: auto; // Adjusts width dynamically
+  /* margin: 0 5px; */
   height: 100%;
-  gap: 30px;
+  /* border: 1px solid red; */
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
 
   .info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     font-family: "Manrope", sans-serif;
     text-align: left;
     .info-text-1 {
       font-size: 22px;
       font-weight: 700;
+      line-height: 100%;
+      font-family: "Manrope", sans-serif;
     }
     .info-text-2 {
-      font-size: 40px;
+      font-size: 28px;
       font-weight: 800;
+      line-height: 100%;
+      font-family: "Manrope", sans-serif;
     }
   }
 
@@ -338,7 +358,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button>Оставить заявку</Button>
+            <Button href="#contact">Оставить заявку</Button>
           </motion.div>
 
           <Logos>
@@ -390,22 +410,28 @@ export default function Hero() {
         <StatItem>
           <img src="/UserHandUp.svg" alt="Clock" />
           <div className="info">
-            <p className="info-text-1">Преподаватели</p>
-            <p className="info-text-2">России</p>
+            <p className="info-text-1">Академия</p>
+            <p className="info-text-2">
+              Северо-Западная <br /> остеопатии
+            </p>
           </div>
         </StatItem>
         <StatItem>
           <img src="/Star.svg" alt="Clock" />
           <div className="info">
             <p className="info-text-1">Практика</p>
-            <p className="info-text-2">в Biolife</p>
+            <p className="info-text-2">
+              в остеопатической <br /> клинике Biolife
+            </p>
           </div>
         </StatItem>
         <StatItem>
           <img src="/RibbonsStar.svg" alt="Clock" />
           <div className="info">
             <p className="info-text-1">Официальные</p>
-            <p className="info-text-2">Сертификаты</p>
+            <p className="info-text-2">
+              Сертификат <br /> государственного образца
+            </p>
           </div>
         </StatItem>
       </Stats>

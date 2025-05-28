@@ -84,12 +84,11 @@ const Overlay = styled.div`
 `;
 
 const Avatar = styled.img`
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   margin-top: 18px;
-  border: 4px solid #fff;
   background: #fff;
   box-shadow: 0 2px 8px 0 rgba(83, 156, 208, 0.1);
 
@@ -102,13 +101,14 @@ const Avatar = styled.img`
 
 const Name = styled.div`
   margin-top: 40px;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 700;
   color: #fff;
   padding: 0 20px;
   text-align: left;
   font-family: "Poppins", sans-serif;
-  letter-spacing: 0.01em;
+  /* letter-spacing: 0.01em; */
+  line-height: 100%;
 
   @media (max-width: 600px) {
     margin-top: 12px;
@@ -123,8 +123,7 @@ const Buttons = styled.div`
   justify-content: flex-start;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-
-  padding: 0 20px;
+  padding-left: 20px;
 
   @media (max-width: 600px) {
     margin-top: 8px;
@@ -136,9 +135,11 @@ const LinkButton = styled.a`
   background: #fff;
   color: #61b6e6;
   border-radius: 16px;
-  padding: 10px 26px 10px 18px;
+  padding: 10px 12px;
   font-size: 17px;
-  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+
+  font-weight: 400;
   text-decoration: none;
   border: none;
   display: flex;
@@ -248,7 +249,7 @@ const CarouselControls = styled.div`
   display: none;
 `;
 
-const CarouselNav = styled.div`
+export const CarouselNav = styled.div`
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -256,10 +257,13 @@ const CarouselNav = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 28px;
-  font-family: "Manrope";
+  font-size: 54px;
+  font-family: "Manrope", sans-serif;
+  line-height: 100%;
   font-weight: 700;
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 
   @media (max-width: 600px) {
     font-size: 28px;
@@ -267,7 +271,7 @@ const Title = styled.h2`
   }
 `;
 
-const NavBtn = styled.button`
+export const NavBtn = styled.button`
   background: #f5f6fa;
   border: 1.5px solid #61b6e6;
   color: #61b6e6;
@@ -333,7 +337,14 @@ function TeacherCard({ photo, avatar, name, siteUrl, facebookUrl }) {
       <Photo src={photo} alt={name} />
       <Overlay className="overlay">
         <Avatar src={avatar || photo} alt={name} />
-        <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
           <Name>{name}</Name>
           <Buttons>
             {siteUrl && (

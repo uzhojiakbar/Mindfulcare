@@ -24,7 +24,7 @@ const Section = styled.section`
 `;
 
 const TextBlock = styled.div`
-  max-width: 600px;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -34,36 +34,42 @@ const TextBlock = styled.div`
     color: #111;
     margin-bottom: 10px;
     font-weight: 700;
+    line-height: 100%;
     font-family: "Manrope", sans-serif;
   }
 
   h2 {
-    font-size: 48px;
+    font-size: 54px;
     font-weight: 700;
     color: #111;
-    font-family: "Manrope";
+    font-family: "Manrope", sans-serif;
     margin-bottom: 20px;
-    line-height: 1.3;
+    line-height: 110%;
   }
 
   p {
     font-size: 18px;
-    line-height: 1.5;
     font-weight: 400;
-    font-family: "Poppins", sans-serif;
+    line-height: 110%;
+
+    font-family: "Manrope", sans-serif;
     color: #333;
   }
 
   @media (max-width: 768px) {
     gap: 10px;
 
+    h4 {
+      font-size: 24px;
+      line-height: 100%;
+    }
     h2 {
       font-size: 24px;
+      margin-bottom: 14px;
     }
 
     p {
-      margin-top: 24px;
-      font-size: 18px;
+      font-size: 14px;
     }
   }
 `;

@@ -14,17 +14,19 @@ const Section = styled.section`
 `;
 
 const Title = styled.h2`
-  font-size: 28px;
-  font-family: "Manrope";
+  font-size: 54px;
+  font-family: "Manrope", sans-serif;
+  line-height: 100%;
   font-weight: 700;
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 
   @media (max-width: 600px) {
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 30px;
   }
 `;
-
 const FaqList = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,6 +41,9 @@ const FaqItem = styled.div`
   border-radius: 18px;
   overflow: hidden;
   transition: box-shadow 0.22s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Question = styled.button`
@@ -50,7 +55,7 @@ const Question = styled.button`
   font-size: 1.13rem;
   font-weight: 600;
   text-align: left;
-  padding: 26px 54px 26px 28px;
+  padding: 26px 20px 26px 28px;
   cursor: pointer;
   color: #18181b;
   display: flex;
@@ -60,10 +65,10 @@ const Question = styled.button`
   position: relative;
   border-radius: 18px;
 
-  &:hover,
+  /* &:hover,
   &:focus {
     background: #f1f5fa;
-  }
+  } */
 `;
 
 const AnswerWrapper = styled.div`
@@ -106,9 +111,6 @@ const Chevron = styled.span`
   justify-content: center;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   transform: ${({ open }) => (open ? "rotate(-180deg)" : "rotate(0deg)")};
-  position: absolute;
-  right: 28px;
-  top: 50%;
   transform-origin: center;
   font-size: 1.6rem;
   color: #539cd0;
@@ -116,27 +118,29 @@ const Chevron = styled.span`
 
 const faqs = [
   {
-    question: "What is a mental health consultant?",
-    answer: `<p>Lorem ipsum dolor sit amet consectetur. Convallis est urna adipiscing fringilla nulla diam lorem non mauris. Ultrices aliquet at quam adipiscing feugiat interdum mattis. Placerat donec risus diam sed et. A in ullamcorper ipsum justo vestibulum sit cursus. A risus donec eget enim aliquet integer cursus et. Phasellus ac augue ultricies sem aliquam faucibus sem non volutpat.</p>`,
-  },
-  {
-    question: "What services do you offer as a mental health consultant?",
-    answer: `<ul>
-      <li>Individual counseling</li>
-      <li>Group therapy</li>
-      <li>Workshops and seminars</li>
-      <li>Corporate wellness programs</li>
-    </ul>`,
+    question:
+      "Можно ли пройти курс со средне специальным медицинским образованием?",
+    answer: `<p>Программа адаптирована для всех уровней специалистов. Так как в процессе обучения предусмотрено много практики, то все прошедшие обучение получат необходимые для работы практические навыки.</p>`,
   },
   {
     question:
-      "How do you tailor your approach to meet the individual needs of clients?",
-    answer: `<p>Each client receives a personalized plan based on their unique needs, goals, and preferences. We use evidence-based methods and regular feedback to ensure the best outcomes.</p>`,
+      "Можно ли пройти курс для специалистов без медицинского образования?",
+    answer: `<p>При наличии другого высшего не медицинского образования, вы также можете пройти курс. Вы получите полноценное обучение по теории и практике, наравне с другими специалистами. </p>`,
   },
   {
-    question:
-      "What strategies do you use to promote mental wellness in organizations?",
-    answer: `<p>We offer training, policy development, and ongoing support to foster a healthy workplace culture and address mental health proactively.</p>`,
+    question: "Какой документ я получаю по окончанию курса?",
+    answer: `<p>
+    Вы получаете сертификат государственного образца, программа которого утверждена в Министерстве Здравоохранения Республики Узбекистан.
+    <br/>
+    Для специалистов с высшим медицинским образованием - это сертификат о дополнительной специализации по направлению "Остеопатия". 
+    <br/>
+    Для специалистов со средне-специальным медицинским образованием - это сертификат о прослушивании и получении базовых практических навыков по курсу "Остеопатия".
+    Для специалистов с высшим немедицинским образованием - сертификат о прослушивании и получении базовых практических навыков по курсу "Остеопатия".
+    </p>`,
+  },
+  {
+    question: "Могу ли я работать с сертификатом остеопата, после обучения?",
+    answer: `<p>Можете во всех организациях, если у вас есть высшее медицинское образование. При наличии средне специального медицинского образования, вы можете устроится в частные медицинские учреждениях. Для специалистов успешно завершивших курс, мы гарантируем трудоустройство.</p>`,
   },
 ];
 

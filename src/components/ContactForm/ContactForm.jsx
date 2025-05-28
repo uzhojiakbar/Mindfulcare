@@ -6,13 +6,25 @@ const FormSection = styled.section`
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  background: transparent;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 48px 0 64px 0;
   @media (max-width: 1100px) {
     padding: 32px 0 32px 0;
+  }
+`;
+
+const Section = styled.section`
+  width: 100%;
+  position: relative;
+
+  padding: 48px 0 48px 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 900px) {
+    padding: 24px 0 24px 0;
   }
 `;
 
@@ -98,7 +110,7 @@ const InnerCard = styled.div`
 
 const Title = styled.h2`
   font-size: 38px;
-  font-family: "Inter", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 600;
   text-align: left;
   margin-bottom: 28px;
@@ -110,7 +122,7 @@ const Title = styled.h2`
 
 const Label = styled.label`
   font-size: 15px;
-  font-family: "Inter", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 500;
   margin-bottom: 6px;
   color: #344054;
@@ -123,7 +135,7 @@ const Input = styled.input`
   border-radius: 8px;
   border: 1.5px solid #d0d5dd;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Manrope", sans-serif;
   background-color: #fff;
   color: #344054;
 
@@ -148,7 +160,7 @@ const Button = styled.button`
   width: 100%;
 
   font-weight: 700;
-  font-family: "Manrope";
+  font-family: "Manrope", sans-serif;
   font-size: 18px;
   color: white;
 
@@ -364,99 +376,101 @@ export default function ContactForm() {
   }, []);
 
   return (
-    <FormSection>
-      <FormGrid>
-        <ImageBlock />
-        <FormWrapper>
-          <InnerCard>
-            <form onSubmit={handleSubmit} autoComplete="off">
-              <Title>Связаться с нами</Title>
-              <Label htmlFor="fio">ФИО</Label>
-              <Input
-                id="fio"
-                placeholder="Your name"
-                value={fio}
-                onChange={(e) => setFio(e.target.value)}
-                disabled={loading}
-                autoComplete="off"
-              />
-              <Label htmlFor="phone">Номер телефона</Label>
-              <Input
-                id="phone"
-                placeholder="+998 90 123 45 67"
-                value={phone}
-                onChange={handlePhoneChange}
-                disabled={loading}
-                autoComplete="off"
-                inputMode="tel"
-              />
-              <Label htmlFor="telegram">Ваш никнейм в Telegram</Label>
-              <Input
-                id="telegram"
-                placeholder="@username"
-                value={telegram}
-                onChange={(e) => setTelegram(e.target.value)}
-                disabled={loading}
-                autoComplete="off"
-              />
-              <Button type="submit" disabled={loading}>
-                {loading ? "Отправка..." : "Отправить"}
-              </Button>
-            </form>
-          </InnerCard>
-        </FormWrapper>
-      </FormGrid>
-      {toast && (
-        <Toast type={toast.type}>
-          <span className="toast-icon">
-            {toast.type === "loading" && (
-              <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="9"
-                  stroke="#fff"
-                  strokeWidth="3"
-                  opacity="0.3"
+    <Section>
+      <FormSection id="contact">
+        <FormGrid>
+          <ImageBlock />
+          <FormWrapper>
+            <InnerCard>
+              <form onSubmit={handleSubmit} autoComplete="off">
+                <Title>Связаться с нами</Title>
+                <Label htmlFor="fio">ФИО</Label>
+                <Input
+                  id="fio"
+                  placeholder="Your name"
+                  value={fio}
+                  onChange={(e) => setFio(e.target.value)}
+                  disabled={loading}
+                  autoComplete="off"
                 />
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="9"
-                  stroke="#fff"
-                  strokeWidth="3"
-                  strokeDasharray="56"
-                  strokeDashoffset="36"
+                <Label htmlFor="phone">Номер телефона</Label>
+                <Input
+                  id="phone"
+                  placeholder="+998 90 123 45 67"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  disabled={loading}
+                  autoComplete="off"
+                  inputMode="tel"
                 />
-              </svg>
-            )}
-            {toast.type === "success" && (
-              <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
-                <circle cx="11" cy="11" r="10" fill="#fff" />
-                <path
-                  d="M7 11.5L10 14.5L15 9.5"
-                  stroke="#61b6e6"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <Label htmlFor="telegram">Ваш никнейм в Telegram</Label>
+                <Input
+                  id="telegram"
+                  placeholder="@username"
+                  value={telegram}
+                  onChange={(e) => setTelegram(e.target.value)}
+                  disabled={loading}
+                  autoComplete="off"
                 />
-              </svg>
-            )}
-            {toast.type === "error" && (
-              <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
-                <circle cx="11" cy="11" r="10" fill="#fff" />
-                <path
-                  d="M8 8L14 14M14 8L8 14"
-                  stroke="#e05a5a"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            )}
-          </span>
-          <span>{toast.msg}</span>
-        </Toast>
-      )}
-    </FormSection>
+                <Button type="submit" disabled={loading}>
+                  {loading ? "Отправка..." : "Отправить"}
+                </Button>
+              </form>
+            </InnerCard>
+          </FormWrapper>
+        </FormGrid>
+        {toast && (
+          <Toast type={toast.type}>
+            <span className="toast-icon">
+              {toast.type === "loading" && (
+                <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="9"
+                    stroke="#fff"
+                    strokeWidth="3"
+                    opacity="0.3"
+                  />
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="9"
+                    stroke="#fff"
+                    strokeWidth="3"
+                    strokeDasharray="56"
+                    strokeDashoffset="36"
+                  />
+                </svg>
+              )}
+              {toast.type === "success" && (
+                <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
+                  <circle cx="11" cy="11" r="10" fill="#fff" />
+                  <path
+                    d="M7 11.5L10 14.5L15 9.5"
+                    stroke="#61b6e6"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
+              {toast.type === "error" && (
+                <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
+                  <circle cx="11" cy="11" r="10" fill="#fff" />
+                  <path
+                    d="M8 8L14 14M14 8L8 14"
+                    stroke="#e05a5a"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              )}
+            </span>
+            <span>{toast.msg}</span>
+          </Toast>
+        )}
+      </FormSection>
+    </Section>
   );
 }
